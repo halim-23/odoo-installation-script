@@ -13,7 +13,7 @@ set -euo pipefail
 
 # --- SCRIPT CONFIGURATION ---
 ODOO_VERSION="18.0"
-ODOO_USER="odoo18e"
+ODOO_USER="odoo"
 ODOO_HOME="/opt/$ODOO_USER"
 ODOO_CONFIG_FILE="/etc/${ODOO_USER}.conf"
 
@@ -115,8 +115,8 @@ create_odoo_config() {
     cat > "$ODOO_CONFIG_FILE" <<EOF
 [options]
 admin_passwd = ${ADMIN_PASSWD}
-db_host = False
-db_port = False
+db_host = localhost
+db_port = 5432
 db_user = ${ODOO_USER}
 db_password = ${PG_PASSWORD}
 addons_path = ${ADDONS_PATH}
