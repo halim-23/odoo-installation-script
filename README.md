@@ -46,12 +46,12 @@ Before running the script, you must have the following:
 
 2.  **Make the script executable:**
     ```bash
-    chmod +x provision_odoo18e.sh
+    chmod +x odoo-installation-script.sh
     ```
 
 3.  **Run the script as root:**
     ```bash
-    sudo ./provision_odoo18e.sh
+    sudo ./odoo-installation-script.sh
     ```
 
 4.  **Follow the prompts:**
