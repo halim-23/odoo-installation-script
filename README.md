@@ -114,6 +114,51 @@ sudo journalctl -fu odoo18e
 
 The primary configuration variables (like the Odoo system user name) are located at the top of the `provision_odoo18e.sh` script. You can modify them before running the script if needed.
 
+## 🗑️ Uninstallation
+
+If you need to completely remove Odoo from your server, use the included uninstallation script:
+
+### Features
+
+The `odoo-uninstall.sh` script provides a complete cleanup:
+
+*   **🛑 Stops and removes** the Odoo systemd service
+*   **👤 Deletes** the Odoo system user and home directory (`/opt/odoo`)
+*   **🗄️ Removes** PostgreSQL odoo user and all Odoo databases
+*   **📝 Cleans up** Odoo configuration files and logs
+*   **🌐 Removes** Nginx Odoo configuration
+*   **🔐 Optionally removes** SSL certificates
+*   **📦 Optionally removes** system dependencies (PostgreSQL, Nginx, wkhtmltopdf, etc.)
+*   **🔥 Updates** firewall rules
+
+### Usage
+
+1.  **Make the script executable:**
+    ```bash
+    chmod +x odoo-uninstall.sh
+    ```
+
+2.  **Run the script as root:**
+    ```bash
+    sudo ./odoo-uninstall.sh
+    ```
+
+3.  **Follow the prompts:**
+    The script will ask for confirmation before proceeding and provide options for:
+    *   Removing all databases (including non-Odoo databases)
+    *   Removing SSL certificates
+    *   Removing system dependencies (PostgreSQL, Nginx, Certbot, wkhtmltopdf)
+    *   Updating firewall rules
+
+### Safety Features
+
+*   **Double confirmation** required (yes/no + typing 'DELETE')
+*   **Interactive prompts** for optional removals
+*   **Detailed logging** of all actions
+*   **Graceful handling** of missing components
+
+⚠️ **WARNING:** This script will permanently delete all Odoo data, databases, and configurations. This action cannot be undone!
+
 ## 📄 License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
